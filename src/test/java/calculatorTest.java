@@ -34,6 +34,7 @@ public class calculatorTest {
             "1,-1, 0"
     })
     @Order(3)
+    @DisplayName("Тест операции сложения")
 
     public void testAdd(int a, int b, int sum){
         //Calculator calculator = new Calculator(a,b);
@@ -47,15 +48,20 @@ public class calculatorTest {
     @ParameterizedTest(name = "{index} => a={0}, b={1}, multiply={2}")
     @CsvFileSource(resources = "/multiplicationTest")
     @Order(2)
+    @DisplayName("Тест операции умножения")
 
     public void testMultiply(int a, int b, int multiply){
-        Calculator calculator = new Calculator(a,b);
+        //Calculator calculator = new Calculator(a,b);
+        calculator.setA(a);
+        calculator.setB(b);
         assertEquals(multiply, calculator.calculate('*'), 0.001);
     }
 
     @ParameterizedTest(name = "{index} => a={0}, b={1}, subtract={2}")
     @ArgumentsSource(CustomArgumentProviderSubtraction.class)
     @Order(1)
+    @DisplayName("Тест операции вычитания")
+
 
     public void testSubtract(int a, int b, int subtract){
         //Calculator calculator = new Calculator(a,b);
@@ -67,8 +73,10 @@ public class calculatorTest {
     @ParameterizedTest(name = "{index} => a={0}, b={1}, divide={2}")
     @MethodSource("CustomArgumentProviderDivide")
     @Order(4)
+    @DisplayName("Тест операции деления")
+    @Disabled
 
-    public void testDivide(int a, int b, int divide) {
+    public void testDivide(int a, int b, float divide) {
         //Calculator calculator = new Calculator(a, b);
         calculator.setA(a);
         calculator.setB(b);
@@ -78,9 +86,9 @@ public class calculatorTest {
             return Stream.of(
                     Arguments.of(2, 1, 2),
                     Arguments.of(4, 2, 2),
-                    Arguments.of(1, 2, 0.5),
-                    Arguments.of(3, 4, 0.75),
-                    Arguments.of(7, 8, 0.875)
+                    Arguments.of(1, 2, 0.5f),
+                    Arguments.of(3, 4, 0.75f),
+                    Arguments.of(7, 8, 0.875f)
             );
 
         }
@@ -97,6 +105,7 @@ public class calculatorTest {
             "5, 0, ArithmeticException "
     })
     @Order(5)
+    @DisplayName("Тест операции деления на ноль")
 
     public void testDivideZero(int a, int b, Exception e){
         //Calculator calculator = new Calculator(a,b);
