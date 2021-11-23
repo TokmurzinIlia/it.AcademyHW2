@@ -38,12 +38,7 @@ public class Calculator {
                 return a + b;
             }
             case '/': {
-                try {
                     return a / b;
-                } catch (ArithmeticException e) {
-                    System.out.println("На ноль делить нельзя");
-                }
-
             }
             case '*': {
                 return a * b;
