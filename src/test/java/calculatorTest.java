@@ -95,8 +95,7 @@ public class calculatorTest {
 
     @ParameterizedTest(name = "{index} => a={0}, b={1}, divide={2}")
     @CsvSource({
-            "1, 0, ArithmeticException "
-            ,
+            "1, 0, ArithmeticException ",
             "2, 0, ArithmeticException ",
             "8, 0, ArithmeticException ",
             "9, 0, ArithmeticException ",
