@@ -1,5 +1,7 @@
 package com.it_academy.practice.junit_basics;
 
+import sun.awt.SunToolkit;
+
 public class Calculator {
 
     private int a;
@@ -9,16 +11,19 @@ public class Calculator {
         this.a = a;
         this.b = b;
     }
+    public Calculator() {
 
-    public float getA() {
-        return a;
     }
+
+
+
+    public int getA() { return a;}
 
     public void setA(int a) {
         this.a = a;
     }
 
-    public float getB() {
+    public int getB() {
         return b;
     }
 
@@ -28,20 +33,27 @@ public class Calculator {
 
     public float calculate(char operation) {
         switch (operation) {
-            default: {
-                return 0;
-            }
+            default:
+                return 0 ;
+
             case '-': {
                 return a - b;
             }
             case '+': {
                 return a + b;
             }
-            case '/': {
+            case '/':
+
                     return a / b;
-            }
+
             case '*': {
                 return a * b;
+            }
+            case '^': {
+                return (float) Math.pow(a,b);
+            }
+            case '@': {
+                return (float) Math.sqrt(a);
             }
        }
 
