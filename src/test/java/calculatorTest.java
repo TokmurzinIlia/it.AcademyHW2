@@ -37,7 +37,7 @@ public class calculatorTest {
     @DisplayName("Тест операции сложения")
 
     public void testAdd(int a, int b, int sum){
-        //Calculator calculator = new Calculator(a,b);
+
         calculator.setA(a);
         calculator.setB(b);
         assertEquals(sum, calculator.calculate('+'), 0.001);
@@ -51,7 +51,7 @@ public class calculatorTest {
     @DisplayName("Тест операции умножения")
 
     public void testMultiply(int a, int b, int multiply){
-        //Calculator calculator = new Calculator(a,b);
+
         calculator.setA(a);
         calculator.setB(b);
         assertEquals(multiply, calculator.calculate('*'), 0.001);
@@ -62,9 +62,8 @@ public class calculatorTest {
     @Order(1)
     @DisplayName("Тест операции вычитания")
 
-
     public void testSubtract(int a, int b, int subtract){
-        //Calculator calculator = new Calculator(a,b);
+
         calculator.setA(a);
         calculator.setB(b);
         assertEquals(subtract, calculator.calculate('-'), 0.001);
@@ -74,10 +73,9 @@ public class calculatorTest {
     @MethodSource("CustomArgumentProviderDivide")
     @Order(4)
     @DisplayName("Тест операции деления")
-    //@Disabled
 
     public void testDivide(int a, int b, float divide) {
-        //Calculator calculator = new Calculator(a, b);
+
         calculator.setA(a);
         calculator.setB(b);
         assertEquals(divide, calculator.calculate('/'), 0.001);
@@ -114,7 +112,7 @@ public class calculatorTest {
     @DisplayName("Тест операции деления на ноль")
 
     public void testDivideZero(int a, int b, Exception e){
-        //Calculator calculator = new Calculator(a,b);
+
         calculator.setA(a);
         calculator.setB(b);
         assertThrows(e.getClass(),() -> calculator.calculate('/'));
@@ -130,16 +128,62 @@ public class calculatorTest {
             "1, -1, 1",
             "2, 2, 4",
             "-2, 2, 4",
-            "2, -2, 0.25f",
+            "2, -2, 0.25",
     })
     @Order(6)
     @DisplayName("Тест операции возведения в степень")
 
     public void testDegree(int a, int b, float degree){
-        //Calculator calculator = new Calculator(a,b);
+
         calculator.setA(a);
         calculator.setB(b);
         assertEquals(degree, calculator.calculate('^'), 0.001);
+
+    }
+
+    @ParameterizedTest(name = "{index} => a={0}, b={1}, degree={2}")
+    @CsvSource({
+            "1, 1, 1",
+            "4, 2, 2",
+            "1, 3, 1",
+            "2, 3, 1.26",
+            "16, 2, 4",
+            "1, -1, 1",
+            "4, -1, 0.25",
+            "0, 2, 0",
+
+    })
+    @Order(7)
+    @DisplayName("Тест извлечения корня n-й степени")
+
+    public void testRoot(int a, int b, float root){
+
+        calculator.setA(a);
+        calculator.setB(b);
+        assertEquals(root, calculator.calculate('@'), 0.001);
+
+    }
+
+
+    @ParameterizedTest(name = "{index} => a={0}, b={1}, degree={2}")
+    @CsvSource({
+            "1, 1, 1",
+            "4, 2, 2",
+            "1, 3, 1",
+            "2, 3, 1.26",
+            "16, 2, 4",
+            "1, -1, 1",
+            "4, -1, 0.25",
+            "0, 2, 0"
+
+    })
+    @Order(8)
+    @DisplayName("Тест Disabled")
+    @Disabled
+
+    public void testDisabled(int a, int b, float root){
+
+
 
     }
 }
