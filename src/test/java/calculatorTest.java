@@ -1,5 +1,5 @@
-import com.it_academy.practice.junit_basics.Calculator;
-import com.it_academy.practice.junit_basics.CustomArgumentProviderSubtraction;
+import com.it_academy.practice.junit_basics.Calkulator.Calculator;
+import com.it_academy.practice.junit_basics.CustomArgumentProvider.CustomArgumentProviderSubtraction;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;

@@ -1,4 +1,4 @@
-package com.it_academy.practice.junit_basics;
+package com.it_academy.practice.junit_basics.Calkulator;
 
 import sun.awt.SunToolkit;
 

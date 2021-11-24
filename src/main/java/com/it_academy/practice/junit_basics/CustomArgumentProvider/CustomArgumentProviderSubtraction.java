@@ -1,4 +1,4 @@
-package com.it_academy.practice.junit_basics;
+package com.it_academy.practice.junit_basics.CustomArgumentProvider;
 
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.provider.Arguments;
