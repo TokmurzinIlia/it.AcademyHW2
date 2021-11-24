@@ -44,7 +44,7 @@ public class Calculator {
             }
             case '/':
 
-                    return a / b;
+                    return (float) a / b;
 
             case '*': {
                 return a * b;
@@ -53,7 +53,7 @@ public class Calculator {
                 return (float) Math.pow(a,b);
             }
             case '@': {
-                return (float) Math.sqrt(a);
+                return (float) Math.pow(a,(float)1/b);
             }
        }
 

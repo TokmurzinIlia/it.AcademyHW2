@@ -25,12 +25,12 @@ public class calculatorTest {
 
     @ParameterizedTest(name = "{index} => a={0}, b={1}, sum={2}")
     @CsvSource({
+            "0, 0, 0",
             "1, 1, 2",
-            "2, 3, 5",
-            "2, 2, 4",
-            "1, 10, 11",
-            "22, 25, 47",
-            "56, 44, 100",
+            "-1, 1, 0",
+            "-1, -1, -2",
+            "-1, 0, -1",
+            "1, 0, 1",
             "1,-1, 0"
     })
     @Order(3)
@@ -74,7 +74,7 @@ public class calculatorTest {
     @MethodSource("CustomArgumentProviderDivide")
     @Order(4)
     @DisplayName("Тест операции деления")
-    @Disabled
+    //@Disabled
 
     public void testDivide(int a, int b, float divide) {
         //Calculator calculator = new Calculator(a, b);
@@ -84,11 +84,18 @@ public class calculatorTest {
     }
         private static Stream<Arguments> CustomArgumentProviderDivide() {
             return Stream.of(
-                    Arguments.of(2, 1, 2),
-                    Arguments.of(4, 2, 2),
+                    Arguments.of(1, 1, 1),
+                    Arguments.of(0, 1, 0),
+                    Arguments.of(-1, 1, -1),
+                    Arguments.of(1, -1, -1),
+                    Arguments.of(-1, -1, 1),
                     Arguments.of(1, 2, 0.5f),
+                    Arguments.of(1,-2, -0.5f),
+                    Arguments.of(-1, 2, -0.5f),
                     Arguments.of(3, 4, 0.75f),
-                    Arguments.of(7, 8, 0.875f)
+                    Arguments.of(-3, 4, -0.75f),
+                    Arguments.of(3, -4, -0.75f)
+
             );
 
         }
@@ -96,11 +103,11 @@ public class calculatorTest {
     @ParameterizedTest(name = "{index} => a={0}, b={1}, divide={2}")
     @CsvSource({
             "1, 0, ArithmeticException ",
-            "2, 0, ArithmeticException ",
-            "8, 0, ArithmeticException ",
+            "-1, 0, ArithmeticException ",
+            "0, 0, ArithmeticException ",
             "9, 0, ArithmeticException ",
-            "22, 0, ArithmeticException ",
-            "56, 0, ArithmeticException ",
+            "10, 0, ArithmeticException ",
+            "11, 0, ArithmeticException ",
             "5, 0, ArithmeticException "
     })
     @Order(5)
@@ -113,4 +120,26 @@ public class calculatorTest {
         assertThrows(e.getClass(),() -> calculator.calculate('/'));
     }
 
+    @ParameterizedTest(name = "{index} => a={0}, b={1}, degree={2}")
+    @CsvSource({
+            "0, 1, 0",
+            "1, 0, 1",
+            "-1, 1, -1",
+            "-1, -1, -1",
+            "-1, 0, 1",
+            "1, -1, 1",
+            "2, 2, 4",
+            "-2, 2, 4",
+            "2, -2, 0.25f",
+    })
+    @Order(6)
+    @DisplayName("Тест операции возведения в степень")
+
+    public void testDegree(int a, int b, float degree){
+        //Calculator calculator = new Calculator(a,b);
+        calculator.setA(a);
+        calculator.setB(b);
+        assertEquals(degree, calculator.calculate('^'), 0.001);
+
+    }
 }

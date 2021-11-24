@@ -12,13 +12,14 @@ public class CustomArgumentProviderSubtraction implements ArgumentsProvider {
     @Override
     public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) throws Exception {
         return Stream.of(
-                Arguments.of(2, 2, 0),
-                Arguments.of(3, 2, 1),
-                Arguments.of(0, 2, -2),
-                Arguments.of(10, 5, 5),
-                Arguments.of(95, 25, 70),
-                Arguments.of(18, 2, 16),
-                Arguments.of(-2, 2, -4)
+                Arguments.of(0, 0, 0),
+                Arguments.of(0, 1, -1),
+                Arguments.of(-1, 1, -2),
+                Arguments.of(1, -1, 2),
+                Arguments.of(1, 1, 0),
+                Arguments.of(-1, -1, 0),
+                Arguments.of(19, 2, 17)
+
         );
     }
 }
