@@ -102,7 +102,14 @@ public class calculatorTest {
                     Arguments.of(-1, 2, -0.5f),
                     Arguments.of(3, 4, 0.75f),
                     Arguments.of(-3, 4, -0.75f),
-                    Arguments.of(3, -4, -0.75f)
+                    Arguments.of(-2147483648, 1, -2147483648),
+//                    Arguments.of(-2147483648, -1, 2147483648),
+                    Arguments.of(2147483647, 1, 2147483647),
+                    Arguments.of(2147483647, -1, -2147483647)
+//                    Arguments.of(2147483648, -1, -2147483648),
+//                    Arguments.of(-2147483649, 1, -2147483649),
+//                    Arguments.of(2147483648, 1, 2147483648)
+
 
             );
 
@@ -116,7 +123,13 @@ public class calculatorTest {
             "9, 0, ArithmeticException ",
             "10, 0, ArithmeticException ",
             "11, 0, ArithmeticException ",
-            "5, 0, ArithmeticException "
+            "2147483647, 0, ArithmeticException",
+            "2147483648, 0, ArithmeticException",
+            "2147483646, 0, ArithmeticException",
+            "-2147483648, 0, ArithmeticException",
+            "-2147483647, 0, ArithmeticException",
+            "-2147483649, 0, ArithmeticException"
+
     })
     @Order(5)
     @DisplayName("Тест операции деления на ноль")
@@ -139,6 +152,15 @@ public class calculatorTest {
             "2, 2, 4",
             "-2, 2, 4",
             "2, -2, 0.25",
+            "-2147483647, 2, 4611686014132420609",
+            "2147483646, 2, 4611686009837453316",
+            "2147483647, 2, 4611686014132420609",
+            "2147483648, 2, 4611686018427387904",
+            "-2147483648, 2, 4611686018427387904",
+            "-2147483648, 30, 9076030935533343889148330677184451660957398691768765008885326289770145612551296225251271450782204288267814476258502032778653474399077793626653018683486295323382390383590453332169716856898789897889643528945016096228440849041002686084943230837088977557446564364344140092918489677824",
+            "-2147483648, 50, Infinity",
+            "-2147483649, 2, 4611686022722355201"
+
     })
     @Order(6)
     @DisplayName("Тест операции возведения в степень")
@@ -147,7 +169,7 @@ public class calculatorTest {
 
         calculator.setA(a);
         calculator.setB(b);
-        assertEquals(degree, calculator.calculate('^'), 0.001);
+        assertEquals(degree, calculator.calculate('^'));
 
     }
 
@@ -161,6 +183,15 @@ public class calculatorTest {
             "1, -1, 1",
             "4, -1, 0.25",
             "0, 2, 0",
+            "2, 0, Infinity",
+            "-2, 2, NaN",
+            "2147483647, 0, Infinity",
+            "2147483648, 0, Infinity",
+            "2147483646, 0, Infinity",
+            "-2147483648, 0, Infinity",
+            "-2147483647, 0, Infinity",
+            "-2147483649, 0, Infinity"
+
 
     })
     @Order(7)
@@ -184,7 +215,7 @@ public class calculatorTest {
             "16, 2, 4",
             "1, -1, 1",
             "4, -1, 0.25",
-            "0, 2, 0"
+            "0, 2, 0",
 
     })
     @Order(8)

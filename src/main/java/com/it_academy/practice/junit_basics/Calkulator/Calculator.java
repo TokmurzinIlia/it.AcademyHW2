@@ -44,7 +44,7 @@ public class Calculator {
             }
             case '/':
 
-                    return (float) a / b;
+                    return  a / b;
 
             case '*': {
                 return a * b;
