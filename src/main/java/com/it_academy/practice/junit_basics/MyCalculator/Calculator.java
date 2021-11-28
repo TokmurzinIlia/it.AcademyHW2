@@ -1,6 +1,4 @@
-package com.it_academy.practice.junit_basics.Calkulator;
-
-import sun.awt.SunToolkit;
+package com.it_academy.practice.junit_basics.MyCalculator;
 
 public class Calculator {
 
@@ -42,14 +40,31 @@ public class Calculator {
             case '+': {
                 return a + b;
             }
-            case '/':
+            case '/': {
+                float result = (float) a / b;
+            if (Float.isInfinite(result)){
+                System.out.println("На ноль делить нельзя");
+                return a;
+            }
 
-                    return  a / b;
+            else if (Float.isNaN(result)){
+                System.out.println("На ноль делить нельзя");
+                return a;
+            }
+
+            else {return result;}
+            }
+
 
             case '*': {
                 return a * b;
             }
-
+            case '^': {
+                return (float) Math.pow(a,b);
+            }
+            case '@': {
+                return (float) Math.pow(a,(float)1/b);
+            }
        }
 
     }
