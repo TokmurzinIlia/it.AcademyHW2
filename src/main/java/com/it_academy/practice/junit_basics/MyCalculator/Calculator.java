@@ -69,5 +69,19 @@ public class Calculator {
 
     }
 
+    int myCalculateAdd(int count, int... numbers){
+
+        if (count < 0 ){
+            System.out.println("Count  should be greater then 0." + " count =" + count);
+        }
+
+        final int length = count != 0 ? count : numbers.length;
+        int num = 0;
+
+        for (int i = 0; i < length; i++) {
+            num += numbers[i];
+        }
+    return num;}
+
 
 }
