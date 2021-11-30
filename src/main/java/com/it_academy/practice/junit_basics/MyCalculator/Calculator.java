@@ -69,19 +69,26 @@ public class Calculator {
 
     }
 
-    int myCalculateAdd(int count, int... numbers){
-
+    public int myCalculateAdd(int count, int... numbers){
+        int num = 0;
         if (count < 0 ){
             System.out.println("Count  should be greater then 0." + " count =" + count);
         }
+        else try {
+            final int length = count != 0 ? count : numbers.length;
 
-        final int length = count != 0 ? count : numbers.length;
-        int num = 0;
 
-        for (int i = 0; i < length; i++) {
-            num += numbers[i];
+            for (int i = 0; i < length; i++) {
+                num += numbers[i];
+            }
+            return num;}
+        catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("The number of arguments must be greater than or equal to count." +
+                    " You entered cunt =" + numbers.length);
+            num = 0;
         }
-    return num;}
+        return num;}
+
 
 
 }

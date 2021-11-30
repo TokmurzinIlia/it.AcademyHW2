@@ -44,7 +44,7 @@ public class CalculatorTest {
             "-2147483648, -2147483648, -4294967296"
     })
     @Order(3)
-    @DisplayName("Тест операции сложения")
+    @DisplayName("Add operation test")
 
     public void testAdd(int a, int b, float sum){
 
@@ -58,7 +58,7 @@ public class CalculatorTest {
     @ParameterizedTest(name = "{index} => a={0}, b={1}, multiply={2}")
     @CsvFileSource(resources = "/multiplicationTest")
     @Order(2)
-    @DisplayName("Тест операции умножения")
+    @DisplayName("Multiplication test")
 
     public void testMultiply(int a, int b, int multiply){
 
@@ -70,7 +70,7 @@ public class CalculatorTest {
     @ParameterizedTest(name = "{index} => a={0}, b={1}, subtract={2}")
     @ArgumentsSource(CustomArgumentProviderSubtraction.class)
     @Order(1)
-    @DisplayName("Тест операции вычитания")
+    @DisplayName("Subtraction test")
 
     public void testSubtract(int a, int b, int subtract){
 
@@ -82,7 +82,7 @@ public class CalculatorTest {
     @ParameterizedTest(name = "{index} => a={0}, b={1}, divide={2}")
     @MethodSource("CustomArgumentProviderDivide")
     @Order(4)
-    @DisplayName("Тест операции деления")
+    @DisplayName("Division test")
 
     public void testDivide(int a, int b, float divide) {
 
@@ -132,7 +132,7 @@ public class CalculatorTest {
 
     })
     @Order(5)
-    @DisplayName("Тест операции деления на ноль")
+    @DisplayName("Division by zero test")
 
     public void testDivideZero(int a, int b, Exception e){
 
@@ -154,7 +154,7 @@ public class CalculatorTest {
 
     })
     @Order(8)
-    @DisplayName("Тест Disabled")
+    @DisplayName("Test Disabled")
     @Disabled
 
     public void testDisabled(int a, int b, float root){

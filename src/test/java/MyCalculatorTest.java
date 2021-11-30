@@ -45,7 +45,7 @@ public class MyCalculatorTest {
             "-2147483648, -2147483648, -4294967296"
     })
     @Order(3)
-    @DisplayName("Тест операции сложения")
+    @DisplayName("Add operation test")
 
     public void testAdd(int a, int b, float sum){
 
@@ -59,7 +59,7 @@ public class MyCalculatorTest {
     @ParameterizedTest(name = "{index} => a={0}, b={1}, multiply={2}")
     @CsvFileSource(resources = "/multiplicationTest")
     @Order(2)
-    @DisplayName("Тест операции умножения")
+    @DisplayName("Multiply test")
 
     public void testMultiply(int a, int b, int multiply){
 
@@ -71,7 +71,7 @@ public class MyCalculatorTest {
     @ParameterizedTest(name = "{index} => a={0}, b={1}, subtract={2}")
     @ArgumentsSource(CustomArgumentProviderSubtraction.class)
     @Order(1)
-    @DisplayName("Тест операции вычитания")
+    @DisplayName("Subtract test")
 
     public void testSubtract(int a, int b, int subtract){
 
@@ -83,7 +83,7 @@ public class MyCalculatorTest {
     @ParameterizedTest(name = "{index} => a={0}, b={1}, divide={2}")
     @MethodSource("CustomArgumentProviderDivide")
     @Order(4)
-    @DisplayName("Тест операции деления")
+    @DisplayName("Division test")
 
     public void testDivide(int a, int b, float divide) {
 
@@ -133,7 +133,7 @@ public class MyCalculatorTest {
 
     })
     @Order(5)
-    @DisplayName("Тест операции деления на ноль")
+    @DisplayName("Division by zero test")
 
     public void testDivideZero(int a, int b, float divide){
         calculator.setA(a);
@@ -163,7 +163,7 @@ public class MyCalculatorTest {
 
     })
     @Order(6)
-    @DisplayName("Тест операции возведения в степень")
+    @DisplayName("Exponentiation test")
 
     public void testDegree(int a, int b, float degree){
 
@@ -195,7 +195,7 @@ public class MyCalculatorTest {
 
     })
     @Order(7)
-    @DisplayName("Тест извлечения корня n-й степени")
+    @DisplayName("Nth root extraction test")
 
     public void testRoot(int a, int b, float root){
 
@@ -219,12 +219,50 @@ public class MyCalculatorTest {
 
     })
     @Order(8)
-    @DisplayName("Тест Disabled")
+    @DisplayName("Test Disabled")
     @Disabled
 
     public void testDisabled(int a, int b, float root){
 
+    }
 
+    @Test
+//    @ParameterizedTest(name = "{index} => a={0}, b={1}, degree={2}")
+//    @CsvSource({
+//            "3, 3, '1, 1, 1'"
+////            "4, 2, 2",
+////            "1, 3, 1",
+////            "2, 3, 1.26",
+////            "16, 2, 4",
+////            "1, -1, 1",
+////            "4, -1, 0.25",
+////            "0, 2, 0",
+////            "2, 0, Infinity",
+////            "-2, 2, NaN",
+////            "2147483647, 0, Infinity",
+////            "2147483648, 0, Infinity",
+////            "2147483646, 0, Infinity",
+////            "-2147483648, 0, Infinity",
+////            "-2147483647, 0, Infinity",
+////            "-2147483649, 0, Infinity"
+//
+//
+//    })
+
+    @Order(9)
+    @DisplayName("My Calculate Add test")
+
+    public void myCalculateAdd(){
+        Assertions.assertAll(
+                () -> assertEquals(0, calculator.myCalculateAdd(3,1,1)),
+                () -> assertEquals(0, calculator.myCalculateAdd(3,1)),
+                () -> assertEquals(3, calculator.myCalculateAdd(3,1,1,1,1,1,1)),
+                () -> assertEquals(9, calculator.myCalculateAdd(0,1,1,1,1,1,1,1,1,1))
+        );
 
     }
+
+
+
+
 }

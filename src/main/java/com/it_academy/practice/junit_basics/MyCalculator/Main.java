@@ -9,6 +9,6 @@ public class Main {
         Calculator calculator = new Calculator();
 
 
-        System.out.println(calculator.myCalculateAdd(5,1,1,1,1,1,1,1,1,1,1,1,1,1,1));
+        System.out.println(calculator.myCalculateAdd(5,1,1,1));
     }
 }
