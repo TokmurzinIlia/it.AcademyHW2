@@ -243,18 +243,19 @@ public class MyCalculatorTest {
     @Order(10)
     @DisplayName("My calkulator myCalculateAdd test")
 
-    public void testRoot(int sum, int count, int... num) {
+    public void testmyCalculateAdd(int sum, int count, int... num) {
 
         assertEquals(sum, calculator.myCalculateAdd(count,  num));
     }
        private static Stream<Arguments> testFunc() {
             return Stream.of(
                     Arguments.of(3,3, new int [] {1, 1, 1, 1, 1, 1, 1}),
-                    Arguments.of(1, 3, new int [] {1}),
+                    Arguments.of(0, 3, new int [] {1}),
                     Arguments.of(21, 0, new int [] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}),
                     Arguments.of(-2147483648, 0, new int [] {-2147483648,-1, 1}),
                     Arguments.of(-2147483648, 0, new int [] {-2147483648,-1, -1, 1, 1}),
-                    Arguments.of(2, 3, new int [] {1,1})
+                    Arguments.of(0, -10, new int [] {-2147483648,-1, -1, 1, 1}),
+                    Arguments.of(0, 3, new int [] {1,1})
             );
         }
 
