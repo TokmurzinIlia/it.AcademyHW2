@@ -18,6 +18,9 @@ public class CustomArgumentProviderSubtraction implements ArgumentsProvider {
                 Arguments.of(1, -1, 2),
                 Arguments.of(1, 1, 0),
                 Arguments.of(-1, -1, 0),
+                Arguments.of(-1.5, -1, -0.5),
+                Arguments.of(-1, -1.5, 0.5),
+                Arguments.of(-1.5, -1.5, 0),
                 Arguments.of(19, 2, 17)
 
         );
