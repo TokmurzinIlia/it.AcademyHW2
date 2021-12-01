@@ -11,8 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
 
-
-
 public class MyCalculatorTest {
     Calculator calculator;
 
@@ -226,31 +224,34 @@ public class MyCalculatorTest {
 
     }
 
+    /*========================================================================
+    Если можно, то хотелось бы примерчик для этого теста, чтобы параметры для int[] num
+    брались из аннотаций  @CsvSource, @CsvFileSource.
+=================================================================================*/
+    @ParameterizedTest(name = "{index} => sum={0}, count={1}, int [] num={2}")
+    @MethodSource("testFunc")
+    @Order(10)
+    @DisplayName("My calkulator myCalculateAdd test")
+
+    public void testRoot(int sum, int count, int... num) {
+
+        assertEquals(sum, calculator.myCalculateAdd(count,  num));
+    }
+       private static Stream<Arguments> testFunc() {
+            return Stream.of(
+                    Arguments.of(3,3, new int [] {1, 1, 1, 1, 1, 1, 1}),
+                    Arguments.of(1, 3, new int [] {1}),
+                    Arguments.of(21, 0, new int [] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}),
+                    Arguments.of(-2147483648, 0, new int [] {-2147483648,-1, 1}),
+                    Arguments.of(-2147483648, 0, new int [] {-2147483648,-1, -1, 1, 1}),
+                    Arguments.of(2, 3, new int [] {1,1})
+            );
+        }
+
     @Test
-//    @ParameterizedTest(name = "{index} => a={0}, b={1}, degree={2}")
-//    @CsvSource({
-//            "3, 3, '1, 1, 1'"
-////            "4, 2, 2",
-////            "1, 3, 1",
-////            "2, 3, 1.26",
-////            "16, 2, 4",
-////            "1, -1, 1",
-////            "4, -1, 0.25",
-////            "0, 2, 0",
-////            "2, 0, Infinity",
-////            "-2, 2, NaN",
-////            "2147483647, 0, Infinity",
-////            "2147483648, 0, Infinity",
-////            "2147483646, 0, Infinity",
-////            "-2147483648, 0, Infinity",
-////            "-2147483647, 0, Infinity",
-////            "-2147483649, 0, Infinity"
-//
-//
-//    })
 
     @Order(9)
-    @DisplayName("My Calculate Add test")
+    @DisplayName("My Calculate Add test assertAll")
 
     public void myCalculateAdd(){
         Assertions.assertAll(
@@ -261,8 +262,5 @@ public class MyCalculatorTest {
         );
 
     }
-
-
-
 
 }
